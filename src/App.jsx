@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
-import './App.css'
-import PokeCard from './app/components/Card';
-import PokePagination from './app/components/Pagination';
+import './App.css';
+import PokeCard from './components/Card';
+import PokePagination from './components/Pagination';
 
 function App() {
   const [pokeUrl, setPokeUrl] = useState('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20');
   const [pokemonList, setPokemonList] = useState([]);
-  const [pokemonCount, setPokemonCount] = useState(0);
   const [nextUrl, setNextUrl] = useState('');
   const [previousUrl, setPreviousUrl] = useState('');
 
@@ -15,34 +14,32 @@ function App() {
       try {
         const response = await fetch(pokeUrl);
         const json = await response.json();
-        const {count, next, previous, results } = json;
-        setPokemonCount(count);
+        const {
+          next, previous, results,
+        } = json;
         setNextUrl(next);
         setPreviousUrl(previous);
         setPokemonList(results);
-
       } catch (error) {
         if (error) {
-          console.log(error)
+          console.log(error);
         }
       }
-    }
+    };
 
     fetchPokemons();
-
   }, [pokeUrl]);
 
   return (
     <>
-      <PokePagination nextUrl={nextUrl} previousUrl={previousUrl} setPokeUrl={setPokeUrl}/>
+      { nextUrl.length > 0
+        ? <PokePagination nextUrl={nextUrl} previousUrl={previousUrl} setPokeUrl={setPokeUrl} />
+        : null }
       { pokemonList
-        ?
-        pokemonList.map((pokemon, index) => <PokeCard key={index+1} name={pokemon.name} />)
-        :
-        null
-      }
+        ? pokemonList.map((pokemon) => <PokeCard key={pokemon.name} name={pokemon.name} />)
+        : null }
     </>
-  )
+  );
 }
 
-export default App
+export default App;

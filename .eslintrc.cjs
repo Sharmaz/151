@@ -4,8 +4,9 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
+    'airbnb',
+    'plugin:react/jsx-runtime',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
@@ -17,5 +18,8 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'import/no-extraneous-dependencies': 'off',
+    'react/require-default-props': 'off',
+    'no-console': "off"
   },
 }
