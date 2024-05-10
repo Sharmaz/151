@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 function PokePagination({ nextUrl, previousUrl, setPokeUrl }) {
+  const [isLastPage, setIsLastPage] = useState(false);
   const totalOfPages = Math.ceil(151 / 20);
   const pagesList = [];
   for (let i = 1; i <= totalOfPages; i += 1) {
@@ -20,7 +22,12 @@ function PokePagination({ nextUrl, previousUrl, setPokeUrl }) {
         pagesList.map((page, index) => (
           <button
             key={page}
-            onClick={() => setPokeUrl(`https://pokeapi.co/api/v2/pokemon/?offset=${index * 20}&limit=20`)}
+            onClick={() => {
+              setPokeUrl(`https://pokeapi.co/api/v2/pokemon/?offset=${index * 20}&limit=20`);
+              if (index === pagesList.length - 1) {
+                setIsLastPage(true);
+              } else { setIsLastPage(false); }
+            }}
             type="button"
           >
             {page}
@@ -28,7 +35,14 @@ function PokePagination({ nextUrl, previousUrl, setPokeUrl }) {
         ))
       }
       <button
-        onClick={() => setPokeUrl(nextUrl)}
+        onClick={() => {
+          setPokeUrl(nextUrl);
+          const offsetParam = nextUrl.split('?')[1].split('&')[0].split('=')[1];
+          if (offsetParam >= 140) {
+            setIsLastPage(true);
+          } else { setIsLastPage(false); }
+        }}
+        disabled={isLastPage}
         type="button"
       >
         Next
