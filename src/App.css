@@ -1,42 +1,78 @@
 #root {
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.card-title {
+  text-shadow: blue 1px 2px 1px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bug {
+  @apply bg-green-600;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.dragon {
+  @apply bg-teal-400;
 }
 
-.card {
-  padding: 2em;
+.electric {
+  @apply bg-yellow-400;
 }
 
-.read-the-docs {
-  color: #888;
+.fairy {
+  @apply bg-red-300;
+}
+
+.fighting {
+  @apply bg-amber-400;
+}
+
+.ghost {
+  @apply bg-indigo-500;
+}
+
+.grass {
+  @apply bg-green-400;
+}
+
+.ground {
+  @apply bg-amber-800;
+}
+
+.ice {
+  @apply bg-cyan-300;
+}
+
+.poison {
+  @apply bg-indigo-400;
+}
+
+.fire {
+  @apply bg-orange-400;
+}
+
+.flying {
+  @apply bg-blue-300;
+}
+
+.normal {
+  @apply bg-slate-400;
+}
+
+.psychic {
+  @apply bg-violet-500
+}
+
+.rock {
+  @apply bg-slate-400;
+}
+
+.steel {
+  @apply bg-slate-300;
+}
+
+.water {
+  @apply bg-blue-400;
 }
