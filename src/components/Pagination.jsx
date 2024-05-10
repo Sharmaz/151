@@ -23,10 +23,12 @@ function PokePagination({ nextUrl, previousUrl, setPokeUrl }) {
           <button
             key={page}
             onClick={() => {
-              setPokeUrl(`https://pokeapi.co/api/v2/pokemon/?offset=${index * 20}&limit=20`);
+              let limit = 20;
               if (index === pagesList.length - 1) {
+                limit = 11;
                 setIsLastPage(true);
               } else { setIsLastPage(false); }
+              setPokeUrl(`https://pokeapi.co/api/v2/pokemon/?offset=${index * 20}&limit=${limit}`);
             }}
             type="button"
           >
@@ -36,11 +38,14 @@ function PokePagination({ nextUrl, previousUrl, setPokeUrl }) {
       }
       <button
         onClick={() => {
-          setPokeUrl(nextUrl);
           const offsetParam = nextUrl.split('?')[1].split('&')[0].split('=')[1];
           if (offsetParam >= 140) {
+            setPokeUrl('https://pokeapi.co/api/v2/pokemon/?offset=140&limit=11');
             setIsLastPage(true);
-          } else { setIsLastPage(false); }
+          } else {
+            setIsLastPage(false);
+            setPokeUrl(nextUrl);
+          }
         }}
         disabled={isLastPage}
         type="button"
