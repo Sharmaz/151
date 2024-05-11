@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function PokePagination({ nextUrl, previousUrl, setPokeUrl }) {
   const [isLastPage, setIsLastPage] = useState(false);
@@ -12,6 +13,7 @@ function PokePagination({ nextUrl, previousUrl, setPokeUrl }) {
   return (
     <>
       <button
+        className="bg-blue-500 px-2 py-1 rounded-sm mx-1"
         onClick={() => setPokeUrl(previousUrl)}
         disabled={!previousUrl}
         type="button"
@@ -22,6 +24,7 @@ function PokePagination({ nextUrl, previousUrl, setPokeUrl }) {
         pagesList.map((page, index) => (
           <button
             key={page}
+            className="bg-blue-500 px-2 py-1 rounded-sm mx-1"
             onClick={() => {
               let limit = 20;
               if (index === pagesList.length - 1) {
@@ -37,6 +40,7 @@ function PokePagination({ nextUrl, previousUrl, setPokeUrl }) {
         ))
       }
       <button
+        className="bg-blue-500 px-2 py-1 rounded-sm mx-1"
         onClick={() => {
           const offsetParam = nextUrl.split('?')[1].split('&')[0].split('=')[1];
           if (offsetParam >= 140) {
@@ -52,6 +56,15 @@ function PokePagination({ nextUrl, previousUrl, setPokeUrl }) {
       >
         Next
       </button>
+      <Link to="/favorites">
+        <button
+          className="bg-blue-500 px-2 py-1 rounded-sm mx-1"
+          type="button"
+        >
+          Favorites
+        </button>
+
+      </Link>
     </>
   );
 }
