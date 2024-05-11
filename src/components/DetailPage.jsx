@@ -1,10 +1,29 @@
 import { useParams, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import useFetch from '../hooks/useFetch';
+import { addToFavs, removeFromFavs } from '../slices/favoritesSlice';
 
 function PokeDetail() {
+  const [isFav, setIsFav] = useState(false);
+  const favs = useSelector((state) => state.favorites.favs);
+  const dispatch = useDispatch();
   const { pokemonId } = useParams();
-
   const { data, loading, error } = useFetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`);
+
+  function isFaved() {
+    const favIds = [];
+    if (favs.length > 0) {
+      favs.forEach((fav) => {
+        favIds.push(fav.id);
+      });
+      setIsFav(favIds.includes(parseInt(pokemonId, 10)));
+    }
+  }
+
+  useEffect(() => {
+    isFaved();
+  }, [pokemonId]);
 
   if (error) {
     return <div>Error</div>;
@@ -21,10 +40,11 @@ function PokeDetail() {
     stats,
     sprites,
     name,
+    id,
   } = data;
 
   return (
-    <div className={`${'flex'} modal absolute top-0 left-0 justify-center items-center w-screen h-screen`}>
+    <div className="flex absolute top-0 left-0 justify-center items-center w-screen h-screen">
 
       <div className="container relative bg-slate-100 z-10 w-full flex justify-evenly rounded-lg">
         <div className="image">
@@ -39,6 +59,20 @@ function PokeDetail() {
               Back
             </button>
           </Link>
+          <button
+            className="bg-yellow-400 z-10 px-2 py-1 rounded-sm absolute left-4 bottom-4"
+            onClick={() => {
+              setIsFav(!isFav);
+              if (!isFav) {
+                dispatch(addToFavs({ id, name, image: sprites.other.home.front_default }));
+              } else {
+                dispatch(removeFromFavs({ id }));
+              }
+            }}
+            type="button"
+          >
+            { !isFav ? 'Add to Favs' : 'Remove from Favs' }
+          </button>
           <div className="sizes">
             <h3 className="text-2xl text-blue-400 font-mono font-extrabold">Sizes:</h3>
             <div>

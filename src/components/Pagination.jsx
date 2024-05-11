@@ -58,7 +58,7 @@ function PokePagination({ nextUrl, previousUrl, setPokeUrl }) {
       </button>
       <Link to="/favorites">
         <button
-          className="bg-blue-500 px-2 py-1 rounded-sm mx-1"
+          className="bg-yellow-400 px-2 py-1 rounded-sm mx-1"
           type="button"
         >
           Favorites
