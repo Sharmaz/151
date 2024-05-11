@@ -20,6 +20,8 @@ module.exports = {
     ],
     'import/no-extraneous-dependencies': 'off',
     'react/require-default-props': 'off',
-    'max-len': ["error", { "code": 150 }],
+    'max-len': ["error", { 'code': 150 }],
+    'react-hooks/exhaustive-deps': 'off',
+    'no-param-reassign': ['error', { 'props': false }],
   },
 }
