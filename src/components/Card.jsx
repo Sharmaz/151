@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
-import PokeDetail from './DetailPage';
 
 function PokeCard({ name, url }) {
   const { data, loading, error } = useFetch(url);
   const [clicks, setClicks] = useState(0);
   const [openImageModal, setOpenImageModal] = useState(false);
-  const [openDetailModal, setOpenDetailModal] = useState(false);
+  const navigate = useNavigate();
+  let pokemonId = '';
+  if (url) {
+    pokemonId = url.replace('https://pokeapi.co/api/v2/pokemon', '').replace(/\//g, '');
+  }
 
-  const goToDetailPage = () => {
-    setOpenDetailModal(true);
+  const goToDetailPage = (id) => {
+    navigate(`/pokemons/${id}`);
   };
 
   const showImageModal = () => {
@@ -24,7 +28,7 @@ function PokeCard({ name, url }) {
         setClicks(0);
       }, 250);
     } else if (clicks === 2) {
-      goToDetailPage();
+      goToDetailPage(pokemonId);
       setClicks(0);
     }
     return () => clearTimeout(singleClickTimer);
@@ -83,9 +87,6 @@ function PokeCard({ name, url }) {
           Close
         </button>
       </div>
-
-      <PokeDetail pokeData={data} openDetailModal={openDetailModal} setOpenDetailModal={setOpenDetailModal} />
-
     </div>
   );
 }
