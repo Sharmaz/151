@@ -6,6 +6,7 @@ import store from './app/store';
 import App from './App';
 import PokeDetail from './components/DetailPage';
 import './index.css';
+import PokeFavorites from './components/FavoriteList';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: 'pokemons/:pokemonId',
     element: <PokeDetail />,
+  },
+  {
+    path: 'favorites',
+    element: <PokeFavorites />,
   },
 ], { basename: '/151' });
 
