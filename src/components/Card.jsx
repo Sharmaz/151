@@ -59,12 +59,12 @@ function PokeCard({ name, url }) {
   return (
     <div className="container w-64">
       <div
-        className="card flex flex-col  bg-red-500 rounded-lg m-4 p-8"
+        className="card flex flex-col justify-center items-center bg-red-500 rounded-lg m-4 p-8"
         onClick={handleClick}
         aria-hidden="true"
       >
         <h3 className="card-title text-3xl text-yellow-300 font-mono font-extrabold">{name}</h3>
-        <img src={sprites.other.home.front_default} alt="name" width={160} height={160} />
+        <img src={sprites.other.home.front_default} alt={name} width={160} height={160} />
         <div className="tags flex justify-center">
           {
             types.map(({ type }) => <span className={`${type.name} px-2 py-1 mx-1 rounded-md`} key={type.name}>{type.name}</span>)
