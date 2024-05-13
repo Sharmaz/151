@@ -5,7 +5,7 @@
   text-align: center;
 }
 
-.card-title {
+.card-title, .error-message {
   text-shadow: blue 1px 2px 1px;
 }
 

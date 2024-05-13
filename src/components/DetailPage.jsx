@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import useFetch from '../hooks/useFetch';
 import { addToFavs, removeFromFavs } from '../slices/favoritesSlice';
 import PageLoading from './PageLoading';
+import PageError from './ErrorPage';
 
 function PokeDetail() {
   const [isFav, setIsFav] = useState(false);
@@ -27,7 +28,7 @@ function PokeDetail() {
   }, [pokemonId]);
 
   if (error) {
-    return <div>Error</div>;
+    return <PageError />;
   }
 
   if (loading) {

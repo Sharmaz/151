@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import CardLoading from './CardLoading';
+import PageError from './ErrorPage';
 
 function PokeCard({ name, url }) {
   const { data, loading, error } = useFetch(url);
@@ -45,7 +46,7 @@ function PokeCard({ name, url }) {
   };
 
   if (error) {
-    return <div>Error</div>;
+    return <PageError />;
   }
 
   if (loading) {

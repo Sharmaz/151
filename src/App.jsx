@@ -5,6 +5,7 @@ import PokeCard from './components/Card';
 import PokePagination from './components/Pagination';
 import { fetchPokemons } from './slices/pokeListSlice';
 import PageLoading from './components/PageLoading';
+import PageError from './components/ErrorPage';
 
 function App() {
   const [pokeUrl, setPokeUrl] = useState('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20');
@@ -19,7 +20,7 @@ function App() {
   const { next, previous, results } = data;
 
   if (error) {
-    return <div>Error</div>;
+    return <PageError />;
   }
 
   if (loading) {
