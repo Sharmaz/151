@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
+import CardLoading from './CardLoading';
 
 function PokeCard({ name, url }) {
   const { data, loading, error } = useFetch(url);
@@ -48,7 +49,7 @@ function PokeCard({ name, url }) {
   }
 
   if (loading) {
-    return <div>...loading</div>;
+    return <CardLoading />;
   }
 
   const {
@@ -63,7 +64,7 @@ function PokeCard({ name, url }) {
         onClick={handleClick}
         aria-hidden="true"
       >
-        <h3 className="card-title text-3xl text-yellow-300 font-mono font-extrabold">{name}</h3>
+        <h3 className="card-title text-3xl text-yellow-300 font-mono font-extrabold text-nowrap">{name}</h3>
         <img src={sprites.other.home.front_default} alt={name} width={160} height={160} />
         <div className="tags flex justify-center">
           {
