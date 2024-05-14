@@ -80,9 +80,9 @@ function PokeCard({ name, url }) {
           onClick={() => setOpenImageModal(false)}
           aria-hidden="true"
         />
-        <img className="z-10" src={sprites.other.home.front_default} alt={name} />
+        <img className="z-10 w-[256px] sm:w-auto h-auto" src={sprites.other.home.front_default} alt={name} />
         <button
-          className="bg-red-500 z-10 px-2 py-1 rounded-sm"
+          className="bg-red-500 z-10 px-2 py-1 rounded-sm self-start mt-80"
           onClick={() => setOpenImageModal(false)}
           type="button"
         >
