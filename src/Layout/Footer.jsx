@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="bg-green-400 w-full h-16 flex items-center justify-center poetsen">
+    <footer className="bg-green-400 w-full h-16 flex items-center justify-center poetsen absolute">
       <div className="text-yellow-300 title text-xl flex flex-col justify-center items-center">
         <div>
           Developed by

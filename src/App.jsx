@@ -30,12 +30,12 @@ function App() {
 
   return (
     <Layout>
-      <div className="my-16 mx-auto max-w-[1440px] p-8 text-center">
+      <div className="mt-16 mx-auto max-w-[1440px] p-8 text-center">
         { data
           ? <PokePagination nextUrl={next} previousUrl={previous} setPokeUrl={setPokeUrl} />
           : null}
 
-        <div className="list flex flex-wrap">
+        <div className="list flex flex-wrap justify-center">
           {
             results.map((pokemon) => <PokeCard key={pokemon.name} name={pokemon.name} url={pokemon.url} />)
           }

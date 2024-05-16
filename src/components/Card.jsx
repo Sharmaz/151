@@ -21,6 +21,7 @@ function PokeCard({ name, url }) {
 
   const showImageModal = () => {
     setOpenImageModal(true);
+    window.scrollTo({ top: 0 });
   };
   useEffect(() => {
     let singleClickTimer;

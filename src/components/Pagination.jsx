@@ -11,9 +11,9 @@ function PokePagination({ nextUrl, previousUrl, setPokeUrl }) {
   }
 
   return (
-    <>
+    <div className="flex flex-wrap justify-center items-center mb-4">
       <button
-        className="bg-blue-500 px-2 py-1 rounded-sm mx-1"
+        className="bg-blue-500 px-2 py-1 rounded-sm mx-1 my-2"
         onClick={() => setPokeUrl(previousUrl)}
         disabled={!previousUrl}
         type="button"
@@ -24,7 +24,7 @@ function PokePagination({ nextUrl, previousUrl, setPokeUrl }) {
         pagesList.map((page, index) => (
           <button
             key={page}
-            className="bg-blue-500 px-2 py-1 rounded-sm mx-1"
+            className="bg-blue-500 px-2 py-1 rounded-sm mx-1 my-2"
             onClick={() => {
               let limit = 20;
               if (index === pagesList.length - 1) {
@@ -40,7 +40,7 @@ function PokePagination({ nextUrl, previousUrl, setPokeUrl }) {
         ))
       }
       <button
-        className="bg-blue-500 px-2 py-1 rounded-sm mx-1"
+        className="bg-blue-500 px-2 py-1 rounded-sm mx-1 my-2"
         onClick={() => {
           const offsetParam = nextUrl.split('?')[1].split('&')[0].split('=')[1];
           if (offsetParam >= 140) {
@@ -58,14 +58,14 @@ function PokePagination({ nextUrl, previousUrl, setPokeUrl }) {
       </button>
       <Link to="/favorites">
         <button
-          className="bg-yellow-400 px-2 py-1 rounded-sm mx-1"
+          className="bg-yellow-400 px-2 py-1 rounded-sm mx-1 my-2"
           type="button"
         >
           Favorites
         </button>
 
       </Link>
-    </>
+    </div>
   );
 }
 
