@@ -52,7 +52,8 @@ function PokeDetail() {
         <div className="flex justify-center mt-16 mx-auto max-w-[1440px] p-8 text-center">
           <div className="py-4 relative bg-slate-100 z-10 w-full flex flex-col sm:flex-row justify-center items-center sm:justify-evenly rounded-lg">
             <div className="image sm:w-1/4 flex justify-center sm:block">
-              <img className="z-10" src={sprites.other.home.front_default} alt={name} height={256} width={256} />
+              <h3 className="card-title text-5xl text-yellow-300 poetsen text-nowrap capitalize">{name}</h3>
+              <img className="z-10 w-full" src={sprites.other.home.front_default} alt={name} height={256} width={256} />
             </div>
             <div className="details text-left w-1/2 sm:w-1/5 ">
               <Link to="..">
@@ -91,7 +92,7 @@ function PokeDetail() {
               <div className="abilities">
                 <h3 className="text-2xl text-blue-400 font-mono font-extrabold">Abilities:</h3>
                 {
-                  abilities.map(({ ability }) => <div className="capitalize" key={ability.name}>{ability.name}</div>)
+                  abilities.map(({ ability }) => <div className="capitalize font-mono font-extrabold" key={ability.name}>{ability.name}</div>)
                 }
               </div>
               <div className="stats">

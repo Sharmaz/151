@@ -16,12 +16,12 @@ function PokeFavorites() {
           </button>
         </Link>
         <h2 className="text-3xl text-blue-400 font-mono font-extrabold my-4">Favorites</h2>
-        <div className="favs-container flex flex-wrap">
+        <div className="favs-container flex flex-wrap justify-center">
           { favs.length > 0
-            ? favs.map((fav) => (
-              <div className="w-64 flex flex-col bg-blue-400 rounded-lg m-4 p-8" key={fav.name}>
-                <img src={fav.image} alt={fav.name} width={160} height={160} />
-                <h3 className="text-3xl text-yellow-300 font-mono font-extrabold my-4">{fav.name}</h3>
+            ? favs.map(({ name, image }) => (
+              <div className="w-64 flex flex-col justify-center bg-blue-400 rounded-lg m-4 p-8" key={name}>
+                <img className="mx-auto" src={image} alt={name} width={160} height={160} />
+                <h3 className="card-title text-3xl text-yellow-300 poetsen text-nowrap capitalize">{name}</h3>
               </div>
             ))
             : null }
