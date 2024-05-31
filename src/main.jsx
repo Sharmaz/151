@@ -7,11 +7,13 @@ import App from './App';
 import PokeDetail from './components/DetailPage';
 import './index.css';
 import PokeFavorites from './components/FavoriteList';
+import PageError from './components/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <PageError />,
   },
   {
     path: 'pokemons/:pokemonId',

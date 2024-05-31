@@ -1,12 +1,15 @@
-#root {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+html, body {
+  scroll-behavior: smooth;
 }
 
-.card-title {
+.card-title, .error-message, .title {
   text-shadow: blue 1px 2px 1px;
+}
+
+.poetsen {
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .bug {

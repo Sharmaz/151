@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
+import CardLoading from './CardLoading';
+import PageError from './ErrorPage';
 
 function PokeCard({ name, url }) {
   const { data, loading, error } = useFetch(url);
@@ -19,6 +21,7 @@ function PokeCard({ name, url }) {
 
   const showImageModal = () => {
     setOpenImageModal(true);
+    window.scrollTo({ top: 0 });
   };
   useEffect(() => {
     let singleClickTimer;
@@ -44,11 +47,11 @@ function PokeCard({ name, url }) {
   };
 
   if (error) {
-    return <div>Error</div>;
+    return <PageError />;
   }
 
   if (loading) {
-    return <div>...loading</div>;
+    return <CardLoading />;
   }
 
   const {
@@ -63,7 +66,7 @@ function PokeCard({ name, url }) {
         onClick={handleClick}
         aria-hidden="true"
       >
-        <h3 className="card-title text-3xl text-yellow-300 font-mono font-extrabold">{name}</h3>
+        <h3 className="card-title text-3xl text-yellow-300 poetsen text-nowrap capitalize">{name}</h3>
         <img src={sprites.other.home.front_default} alt={name} width={160} height={160} />
         <div className="tags flex justify-center">
           {
@@ -78,9 +81,9 @@ function PokeCard({ name, url }) {
           onClick={() => setOpenImageModal(false)}
           aria-hidden="true"
         />
-        <img className="z-10" src={sprites.other.home.front_default} alt={name} />
+        <img className="z-10 w-[256px] sm:w-auto h-auto" src={sprites.other.home.front_default} alt={name} />
         <button
-          className="bg-red-500 z-10 px-2 py-1 rounded-sm"
+          className="bg-red-500 z-10 px-2 py-1 rounded-sm self-start mt-80"
           onClick={() => setOpenImageModal(false)}
           type="button"
         >
